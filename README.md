@@ -2,9 +2,18 @@
 
 ## site/
 
-The Archer Media website. A static page with no build step: open `site/index.html` in a browser, or serve the folder with any static host.
+The Archer Media website. Static, with no build step: serve the `site/` folder with any static host. The repository root `index.html` forwards to `site/` for GitHub Pages.
 
-- `index.html`: the page and its line drawings (inline SVG)
+Pages:
+
+- `index.html`: home
+- `about/`: who we work with, and how we operate
+- `how-we-work/`: the four stages and the full mechanism diagram
+- `results/`: the three figures with their pictographs
+- `contact/`: the email address
+
+Shared files:
+
 - `styles.css`: brand colours, type and layout
 - `script.js`: the slow fade-in as each section scrolls into view
 - `fonts/`: self-hosted Evolventa (GPL with font exception / LPPL) and Montserrat (SIL OFL), with their licences
