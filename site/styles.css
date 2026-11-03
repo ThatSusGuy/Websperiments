@@ -1,0 +1,380 @@
+/* The Archer Media
+   Brand system: Evolventa headings, Montserrat body, indigo and white. */
+
+@font-face {
+  font-family: 'Evolventa';
+  src: url('fonts/Evolventa-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Evolventa';
+  src: url('fonts/Evolventa-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('fonts/Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --archer-indigo: #2E3090;
+  --archer-periwinkle: #484FA2;
+  --archer-tint: #E8E8F0;
+  --archer-white: #FFFFFF;
+  --archer-black: #000000;
+  --archer-ink: #161616;
+  --archer-gradient: linear-gradient(180deg, rgba(46,48,144,0.20) 0%, rgba(46,48,144,0) 100%);
+
+  /* Montserrat is listed after Evolventa so glyphs Evolventa lacks (such as ₹) fall back to it. */
+  --font-heading: 'Evolventa', 'Montserrat', Arial, sans-serif;
+  --font-body: 'Montserrat', Arial, sans-serif;
+
+  --gutter: clamp(20px, 5vw, 64px);
+  --section-space: clamp(96px, 14vw, 168px);
+  --measure: 62ch;
+  --stroke: 1.5;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--archer-white);
+  color: var(--archer-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--archer-indigo);
+  margin: 0;
+}
+
+p { margin: 0; }
+
+a { color: inherit; }
+
+::selection { background: var(--archer-indigo); color: var(--archer-white); }
+
+/* Layout */
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section { padding: var(--section-space) 0; }
+.section--tint { background: var(--archer-tint); }
+.section--indigo { background: var(--archer-indigo); color: var(--archer-white); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--archer-periwinkle);
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+.eyebrow--light { color: rgba(255,255,255,0.72); }
+
+/* 0. Threshold */
+
+.threshold {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+}
+.threshold__mark { margin: 0; }
+.threshold__mark img {
+  width: clamp(200px, 26vw, 300px);
+  height: auto;
+}
+.threshold__cue {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(180deg, rgba(46,48,144,0) 0%, var(--archer-indigo) 100%);
+  opacity: 0.5;
+}
+
+/* 1. The house */
+
+.section--house {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+.statement {
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5.2vw, 4.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  max-width: 20ch;
+}
+.commitment {
+  margin-top: clamp(40px, 6vw, 72px);
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.3;
+  color: var(--archer-periwinkle);
+}
+
+/* 2. The roots */
+
+.prose { max-width: var(--measure); }
+.prose p {
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.75;
+}
+.prose p + p { margin-top: 1.4em; }
+
+/* 3. The code */
+
+.code {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 880px;
+}
+.code li {
+  display: grid;
+  grid-template-columns: clamp(56px, 8vw, 96px) 1fr;
+  align-items: baseline;
+  gap: 0 clamp(16px, 3vw, 32px);
+  padding: clamp(28px, 3.5vw, 40px) 0;
+  border-top: 1px solid var(--archer-tint);
+}
+.code li:last-child { border-bottom: 1px solid var(--archer-tint); }
+.code__num {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  line-height: 1;
+  color: var(--archer-indigo);
+}
+.code p {
+  font-size: clamp(1.0625rem, 1.5vw, 1.3rem);
+  line-height: 1.6;
+  max-width: 44ch;
+}
+
+/* Line drawings (shared style) */
+
+.drawing {
+  fill: none;
+  stroke: var(--archer-indigo);
+  stroke-width: var(--stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.drawing * { vector-effect: non-scaling-stroke; }
+.drawing__dot { fill: var(--archer-indigo); stroke: none; }
+.drawing__loop { stroke-dasharray: 2 7; }
+.drawing text {
+  fill: var(--archer-indigo);
+  stroke: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-anchor: middle;
+}
+.drawing text.left { text-anchor: start; }
+
+/* 4. The work */
+
+.stages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.stage {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  gap: clamp(28px, 6vw, 96px);
+  align-items: center;
+  padding: clamp(40px, 5vw, 64px) 0;
+  border-top: 1px solid var(--archer-tint);
+}
+.stage .drawing { width: 100%; height: auto; }
+.stage__text h3 {
+  font-weight: 700;
+  font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.stage__num { color: var(--archer-periwinkle); font-weight: 400; }
+.stage__text p {
+  max-width: 52ch;
+  font-size: clamp(1.0625rem, 1.3vw, 1.175rem);
+}
+
+.mechanism {
+  margin-top: clamp(72px, 10vw, 128px);
+  padding: clamp(48px, 7vw, 88px) clamp(16px, 4vw, 56px);
+  background: var(--archer-gradient);
+  border-radius: 16px;
+}
+.mechanism svg { width: 100%; height: auto; margin: 0 auto; }
+.mechanism__narrow { display: none; max-width: 320px; }
+
+.after {
+  margin-top: clamp(72px, 10vw, 128px);
+  max-width: var(--measure);
+}
+.after h3 {
+  font-weight: 700;
+  font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.after p { font-size: clamp(1.0625rem, 1.3vw, 1.175rem); }
+
+/* 5. The record */
+
+.record { display: grid; gap: 0; }
+.figure {
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, 300px);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+  padding: clamp(48px, 6vw, 80px) 0;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+.figure:last-child { border-bottom: 1px solid rgba(255,255,255,0.18); }
+.figure--solo { grid-template-columns: 1fr; }
+.figure__number {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--archer-white);
+}
+.figure__label {
+  margin-top: 20px;
+  max-width: 36ch;
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.86);
+}
+.figure__picto {
+  width: 100%;
+  height: auto;
+  fill: none;
+  stroke: var(--archer-white);
+  stroke-width: 1.25;
+  vector-effect: non-scaling-stroke;
+}
+.figure__picto * { vector-effect: non-scaling-stroke; }
+
+/* 6. Contact */
+
+.section--contact { padding-bottom: clamp(72px, 9vw, 112px); }
+.email {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4.4vw, 3.5rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.email a {
+  color: var(--archer-indigo);
+  text-decoration: none;
+  background-image: linear-gradient(var(--archer-periwinkle), var(--archer-periwinkle));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 600ms ease, color 300ms ease;
+}
+.email a:hover,
+.email a:focus-visible { color: var(--archer-periwinkle); background-size: 100% 1px; }
+.email a:focus-visible { outline: 2px solid var(--archer-periwinkle); outline-offset: 6px; border-radius: 4px; }
+
+.footer {
+  padding: clamp(40px, 6vw, 72px) var(--gutter) clamp(48px, 6vw, 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  border-top: 1px solid var(--archer-tint);
+}
+.footer__logo { width: 132px; height: auto; }
+.footer__note {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: #6b6b7a;
+}
+
+/* Reveal: a slow fade as each part comes into view. Content stays visible without JavaScript. */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1200ms ease, transform 1200ms ease;
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .email a { transition: none; }
+}
+
+/* Narrow screens */
+
+@media (max-width: 760px) {
+  .stage { grid-template-columns: 1fr; gap: 24px; }
+  .stage .drawing { max-width: 180px; }
+  .mechanism__wide { display: none; }
+  .mechanism__narrow { display: block; }
+  .figure { grid-template-columns: 1fr; gap: 36px; }
+  .figure__picto { max-width: 280px; }
+}
+
+.nowrap { white-space: nowrap; }
